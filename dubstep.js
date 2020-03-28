@@ -16,6 +16,41 @@
 // songDecoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB")
 //   // =>  WE ARE THE CHAMPIONS MY FRIEND
 
-function songDecoder(song){
-  // ...
+function songDecoder(song) {
+  if (song.typeof === "object") {
+    if (song.length > 1) {
+      for (let i = 0; i < song.length; i++) {
+        if (song[i] === "W" && song[i + 1] === "U" && song[i + 2] === "B") {
+          resultArray.push(" ");
+          const newArray = resultArray.slice(i + 3)
+          songDecoder(newArray)
+          //do it for i + 3
+        } else {
+          resultArray.push(songArray[i]);
+        }
+      }
+    } else {
+      resultArray.push(song[0])
+      return resultArray
+    }
+  } else {
+    console.log('song', song)
+    const songArray = song.split("");
+    const resultArray = [];
+    for (let i = 0; i < songArray.length; i++) {
+      if (songArray[i] === "W" && songArray[i + 1] === "U" && songArray[i + 2] === "B") {
+        resultArray.push(" ");
+        const newArray = resultArray.slice(i + 3)
+        songDecoder(newArray)
+        //do it for i + 3
+        console.log('1st log')
+      } else {
+        resultArray.push(songArray[i]);
+        console.log('2nd log')
+        const newArray = resultArray.slice(i + 1)
+        songDecoder(newArray)
+      }
+    }
+
+  }
 }
