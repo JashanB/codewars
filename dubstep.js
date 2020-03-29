@@ -23,10 +23,16 @@ function songDecoder(song) {
         if (song[i] === "W" && song[i + 1] === "U" && song[i + 2] === "B") {
           resultArray.push(" ");
           const newArray = resultArray.slice(i + 3)
+          console.log('3rd log')
+          console.log('new 1', newArray)
           songDecoder(newArray)
           //do it for i + 3
         } else {
           resultArray.push(songArray[i]);
+          console.log('4th log')
+          const newArray = resultArray.slice(i + 1)
+          console.log('new 4', newArray)
+          songDecoder(newArray)
         }
       }
     } else {
@@ -42,12 +48,14 @@ function songDecoder(song) {
         resultArray.push(" ");
         const newArray = resultArray.slice(i + 3)
         songDecoder(newArray)
+        console.log('new 1', newArray)
         //do it for i + 3
         console.log('1st log')
       } else {
         resultArray.push(songArray[i]);
         console.log('2nd log')
         const newArray = resultArray.slice(i + 1)
+        console.log('new 2', newArray)
         songDecoder(newArray)
       }
     }
