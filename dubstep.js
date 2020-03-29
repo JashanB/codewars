@@ -17,48 +17,28 @@
 //   // =>  WE ARE THE CHAMPIONS MY FRIEND
 
 function songDecoder(song) {
-  if (song.typeof === "object") {
-    if (song.length > 1) {
-      for (let i = 0; i < song.length; i++) {
-        if (song[i] === "W" && song[i + 1] === "U" && song[i + 2] === "B") {
-          resultArray.push(" ");
-          const newArray = resultArray.slice(i + 3)
-          console.log('3rd log')
-          console.log('new 1', newArray)
-          songDecoder(newArray)
-          //do it for i + 3
-        } else {
-          resultArray.push(songArray[i]);
-          console.log('4th log')
-          const newArray = resultArray.slice(i + 1)
-          console.log('new 4', newArray)
-          songDecoder(newArray)
-        }
-      }
+  const songArray = song.split("");
+  const resultMinusSpace = [];
+  const resultArray = songArray.map(function(character, i) {
+    if (songArray[i] === "W" && songArray[i + 1] === "U" && songArray[i + 2] === "B") {
+      return " "
+    } else if (songArray[i] === "U" && songArray[i + 1] === "B" && songArray[i - 1] === "W") {
+      console.log('hi')
+    } else if (songArray[i] === "B" && songArray[i - 1] === "U" && songArray[i - 2] === "W") {
+      console.log('hi')
     } else {
-      resultArray.push(song[0])
-      return resultArray
+      return character
     }
-  } else {
-    console.log('song', song)
-    const songArray = song.split("");
-    const resultArray = [];
-    for (let i = 0; i < songArray.length; i++) {
-      if (songArray[i] === "W" && songArray[i + 1] === "U" && songArray[i + 2] === "B") {
-        resultArray.push(" ");
-        const newArray = resultArray.slice(i + 3)
-        songDecoder(newArray)
-        console.log('new 1', newArray)
-        //do it for i + 3
-        console.log('1st log')
-      } else {
-        resultArray.push(songArray[i]);
-        console.log('2nd log')
-        const newArray = resultArray.slice(i + 1)
-        console.log('new 2', newArray)
-        songDecoder(newArray)
-      }
+  })
+  for (let i = 0; i < resultArray.length; i++) {
+    if (resultArray[i] !== " " && resultArray[i+1] === " " && resultArray[i] !== undefined) {
+      resultMinusSpace.push(resultArray[i])
+      resultMinusSpace.push(" ")
+    } else if (resultArray[i] !== " " && resultArray[i] !== undefined){
+      resultMinusSpace.push(resultArray[i])
     }
-
   }
+  console.log(resultMinusSpace)
+  const resultString = resultMinusSpace.join("");
+  return resultString.trim()
 }
