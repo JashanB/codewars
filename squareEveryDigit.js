@@ -8,5 +8,14 @@
 
 function squareDigits(num){
   //may the code be with you
-  
+  const string = num.toString();
+  const stringArray = string.split('');
+  const result = [];
+  for (let number of stringArray) {
+    const num = Number(number);
+    result.push(num * num);
+    console.log(result)
+  }
+  const numString = result.join('');
+  return Number(numString);
 }
