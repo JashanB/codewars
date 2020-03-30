@@ -21,5 +21,18 @@
 // });
 
 function maskify(cc) {
-
+  const stringArray = cc.split("");
+  const arrayLength = stringArray.length;
+  if (stringArray.length > 4) {
+    const mappedArray = stringArray.map(function(character, index) {
+      if (index < arrayLength - 4) {
+        return "#";
+      } else {
+        return character;
+      }
+    })
+    return mappedArray.join('');
+  } else {
+    return cc;
+  }
 }
