@@ -13,5 +13,13 @@
 
 
 function toCamelCase(str){
-
+  const stringArray = str.split("");
+  const mapped = stringArray.map(function(character, index) {
+    if (stringArray[index -1] === "-" || stringArray[index -1] === "_") {
+      return character.toUpperCase()
+    } else if (character !== "-" && character !== "_") {
+      return character
+    }
+  })
+  return mapped.join("")
 }
