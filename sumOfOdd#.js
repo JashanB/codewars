@@ -16,5 +16,6 @@
 
 
 function rowSumOddNumbers(n) {
-	// TODO
+	return Math.pow(n, 3)
 }
+//row # to power 3 
