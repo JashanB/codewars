@@ -18,22 +18,31 @@
 // });
 
 function humanReadable(secs) {
-  let remaining = secs;
   let hours = 0;
   let minutes = 0;
   let seconds = 0;
-  for (let i = 0; i <= secs; i += 60) {
-    remaining -= 60;
-    minutes += 1;
+  for (let i = 0; i < secs; i += 1) {
+    seconds += 1;
+    if (seconds > 59) {
+      seconds = 0;
+      minutes += 1;
+    }
     if (minutes > 59) {
       hours += 1;
       minutes = 0;
     }
-    if (remaining < 60) {
-      seconds = remaining
+  }
+  const place0 = function (num) {
+    let result = "";
+    if (num < 10) {
+      result = "0" + num.toString();
+    } else {
+      result = num.toString();
     }
+    return result
   }
   console.log(hours)
   console.log(minutes)
   console.log(seconds)
+  return place0(hours) + ":" + place0(minutes) + ":" + place0(seconds);
 }
