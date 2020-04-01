@@ -17,6 +17,79 @@
 //   });
 // });
 
-function humanReadable(seconds) {
-  // TODO
+function humanReadable(secs) {
+  let roundedHours = false;
+  let roundedMinutes = false;
+  let hours = 0;
+  let hrString = "";
+  let minutes = 0;
+  let minString = "";
+  let seconds = 0;
+  let secString = "";
+  if (secs >= 3600) {
+    let goesInto = Math.round(secs / 3600);
+    hours += goesInto;
+    let hourNotRound = (secs / 3600).toString().split('');
+    let hourIndex = hourNotRound.indexOf(".")
+    if ((secs / 3600) < goesInto && hourNotRound[hourIndex + 1] == 9) {
+      roundedHours = true;
+    }
+    let remaining = secs - (goesInto * 3600);
+    if (remaining >= 60) {
+      goesInto = Math.round(remaining / 60);
+      minutes += goesInto;
+      remaining = secs - (goesInto * 3600);
+      if (remaining > 0) {
+        seconds += remaining;
+      }
+      let minNotRound = (remaining / 60).toString().split('');
+      let index = minNotRound.indexOf(".")
+      if ((remaining /60) < goesInto && minNotRound[index + 1] == 9) {
+        roundedMinutes = true;
+      }
+    } else {
+      if (remaining > 0) {
+        seconds += remaining;
+      }
+    }
+  } else if (secs >= 60) {
+    let goesInto = Math.round(secs / 60);
+    minutes += goesInto;
+    let remaining = secs - (goesInto * 3600);
+    if (remaining > 0) {
+      seconds += remaining;
+    }
+    let minNotRound = (secs / 60).toString().split('');
+    let index = minNotRound.indexOf(".")
+    if ((secs / 60) < goesInto && minNotRound[index + 1] == 9) {
+      roundedMinutes = true;
+    }
+  } else {
+    seconds += secs
+  }
+  if (roundedHours) {
+    hours -= 1;
+    minutes = 59;
+    seconds = 59;
+  }
+  if (roundedMinutes) {
+    minutes -= 1;
+    seconds = 59;
+  }
+  if (hours < 10) {
+    hrString = "0" + hours.toString();
+  } else {
+    hrString = hours.toString();
+  }
+  if (minutes < 10) {
+    minString = "0" + minutes.toString();
+  } else {
+    minString = minutes.toString();
+  }
+  if ( seconds < 10) {
+    secString = "0" + seconds.toString();
+  } else {
+    secString = seconds.toString();
+  }
+  return hrString + ":" + minString + ":" + secString
 }
