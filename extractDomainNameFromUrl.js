@@ -9,6 +9,33 @@
 // Test.assertEquals(domainName("www.xakep.ru"), "xakep");
 // Test.assertEquals(domainName("https://youtube.com"), "youtube");
 
-function domainName(url){
-  //your code here
-}
+function domainName(url) {
+  const urlArray = url.split('');
+  let startIndex;
+  let endIndex;
+  const findEnd = function(array) {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === ".") {
+        return i;
+      }
+    }
+  };
+  if (url.includes("www.")) {
+    for (let i = 0; i < urlArray.length; i++) {
+      if (urlArray[i - 1] === '.' && urlArray[i - 2] === 'w' && urlArray[i - 3] === 'w' && urlArray[i - 4] === 'w') {
+        startIndex = i;
+      }
+      const slicedArray = urlArray.slice(startIndex);
+      endIndex = findEnd(slicedArray) + startIndex;
+    }
+  } else {
+    for (let i = 0; i < urlArray.length; i++) {
+      if (urlArray[i] !== "/" && urlArray[i - 1] === "/" && urlArray[i - 2] === "/") {
+        startIndex = i;
+      }
+    }
+    endIndex = findEnd(urlArray);
+  }
+  return urlArray.slice(startIndex, endIndex).join('');
+};
+
