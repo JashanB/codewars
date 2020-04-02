@@ -26,13 +26,29 @@
 //   it ("test1", function(){
 //        Test.assertEquals(bouncingBall(3.0, 0.66, 1.5), 3);
 //   });
-  
+
 //   it ("test2", function(){
 //        Test.assertEquals(bouncingBall(30.0, 0.66, 1.5), 15);
 //   });
-  
+
 // });
 
-function bouncingBall(h,  bounce,  window) {
-  // your code here
+function bouncingBall(h, bounce, window) {
+  let bounceHeight = bounce * h;
+  let up = 0;
+  let down = 1;
+  if ((bounce >= 1 || bounce <= 0) || h <= 0 || window >= h) {
+    return -1;
+  }
+  if (bounceHeight > window) {
+
+    do {
+      bounceHeight = bounceHeight * bounce;
+      up += 1;
+      down += 1;
+    } while (bounceHeight > window)
+    return up + down;
+  } else {
+    return 1;
+  }
 }
