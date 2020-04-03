@@ -28,4 +28,11 @@
 
 function add(n){
   // Let the currying begin!
+  var sum = n;
+  function f (k){
+    sum += k;
+    return f;
+  }
+ f.valueOf = function(){return sum}
+  return f
 }
