@@ -34,5 +34,22 @@ function anagrams(word, words) {
       wordObject[character] = 1;
     }
   }
+  for (let w0rd of words) {
+    const queryObject = {};
+    for (let character of w0rd) {
+      if (queryObject[character]) {
+        queryObject[character] += 1;
+      } else {
+        queryObject[character] = 1;
+      }
+    }
+    const sortedKeysWord = JSON.stringify(Object.keys(wordObject).sort());
+    const sortedValuesWord = JSON.stringify(Object.values(wordObject).sort());
+    const sortedKeysQuery = JSON.stringify(Object.keys(queryObject).sort());
+    const sortedValuesQuery = JSON.stringify(Object.values(queryObject).sort());
+    if (sortedKeysWord === sortedKeysQuery && sortedValuesWord === sortedValuesQuery) {
+      resultArray.push(w0rd);
+    }
+  }
   return resultArray;
-}
+};
