@@ -24,4 +24,15 @@
 
 
 function anagrams(word, words) {
+  const resultArray = [];
+  const wordArray = word.split('');
+  const wordObject = {};
+  for (let character of wordArray) {
+    if (wordObject[character]) {
+      wordObject[character] += 1;
+    } else {
+      wordObject[character] = 1;
+    }
+  }
+  return resultArray;
 }
