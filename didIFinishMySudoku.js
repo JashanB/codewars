@@ -55,7 +55,10 @@
 
 function doneOrNot(board) {
   let score = 0;
-  let numberObject = {
+  let columnScore = 0;
+  let rowCounter = 0;
+  let boxScore = 0;
+  let rowObject = {
     1: [],
     2: [],
     3: [],
@@ -66,30 +69,63 @@ function doneOrNot(board) {
     8: [],
     9: []
   };
-  for (let row of board) {
-    for (let number of row) {
-      numberObject[number].push(number);
-    }
-  }
-  for (let number of Object.keys(numberObject)) {
-    if (numberObject[number].length === 9) {
-      score += 1;
-    }
-  }
-  if (score === 9) {
-    return "Finished!";
-  } else {
-    return "Try again!";
-  }
-};
-
-if (row.includes(1) && row.includes(2) && row.includes(3) && row.includes(4) && row.includes(5) && row.includes(6) && row.includes(7) && row.includes(8) && row.includes(9)) {
-  rowScore += 1;
-}
-
-
-
-
+  let columnObject = {
+  };
+  let boxObject = {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: []
+  };
+    for (let j = 0; j < board.length; j++) {
+      for (let i = 0; i < board[j].length; i++) {
+        if (rowObject[board[j][i]]) {
+          rowObject[board[j][i]].push(board[j][i]);
+        };
+        if (i < 3) {
+          boxObject[(1 + rowCounter).toString()].push(board[j][i]);
+        } else if ( i >= 3 && i < 6) {
+          boxObject[(2 + rowCounter).toString()].push(board[j][i]);
+        } else if (i >= 6) {
+          boxObject[(3 + rowCounter).toString()].push(board[j][i]);
+        };
+        if (columnObject[i]) {
+          columnObject[i].push(board[j][i]);
+        } else {
+          columnObject[i] = [];
+          columnObject[i].push(board[j][i]);
+        };
+        if (rowCounter < 4 && boxObject[(3 + rowCounter).toString()].length === 9) {
+          rowCounter += 3;
+        };
+      };
+    };
+    for (let number of Object.keys(rowObject)) {
+      if (rowObject[number].length === 9) {
+        score += 1;
+      };
+    };
+    for (let column of Object.keys(columnObject)) {
+      if (columnObject[column].includes(1) && columnObject[column].includes(2) && columnObject[column].includes(3) && columnObject[column].includes(4) && columnObject[column].includes(5) && columnObject[column].includes(6) && columnObject[column].includes(7) && columnObject[column].includes(8) && columnObject[column].includes(9)) {
+        columnScore += 1;
+      };
+    };
+    for (let box of Object.keys(boxObject)) {
+      if (boxObject[box].includes(1) && boxObject[box].includes(2) && boxObject[box].includes(3) && boxObject[box].includes(4) && boxObject[box].includes(5) && boxObject[box].includes(6) && boxObject[box].includes(7) && boxObject[box].includes(8) && boxObject[box].includes(9)) {
+        boxScore += 1;
+      };
+    };
+    if (score === 9 && columnScore === 9 && boxScore === 9) {
+      return "Finished!";
+    } else {
+      return "Try again!";
+    };
+  };
 
 
 
