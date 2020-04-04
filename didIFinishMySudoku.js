@@ -41,7 +41,7 @@
 //   [9, 6, 1, 5, 3, 7, 2, 8, 4],
 //   [2, 8, 7, 4, 1, 9, 6, 3, 5],
 //   [3, 4, 5, 2, 8, 6, 1, 7, 9]]), "Finished!");
-         
+
 // Test.assertEquals(doneOrNot([[5, 3, 4, 6, 7, 8, 9, 1, 2], 
 //   [6, 7, 2, 1, 9, 0, 3, 4, 9],
 //   [1, 0, 0, 3, 4, 2, 5, 6, 0],
@@ -53,9 +53,39 @@
 //   [3, 0, 0, 4, 8, 1, 1, 7, 9]]), "Try again!");
 
 
-  function doneOrNot(board){
-    //your code here
+function doneOrNot(board) {
+  let score = 0;
+  let numberObject = {
+    1: [],
+    2: [],
+    3: [],
+    4: [],
+    5: [],
+    6: [],
+    7: [],
+    8: [],
+    9: []
+  };
+  for (let row of board) {
+    for (let number of row) {
+      numberObject[number].push(number);
+    }
   }
+  for (let number of Object.keys(numberObject)) {
+    if (numberObject[number].length === 9) {
+      score += 1;
+    }
+  }
+  if (score === 9) {
+    return "Finished!";
+  } else {
+    return "Try again!";
+  }
+};
+
+if (row.includes(1) && row.includes(2) && row.includes(3) && row.includes(4) && row.includes(5) && row.includes(6) && row.includes(7) && row.includes(8) && row.includes(9)) {
+  rowScore += 1;
+}
 
 
 
