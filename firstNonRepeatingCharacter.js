@@ -15,5 +15,26 @@
 // });
 
 function firstNonRepeatingLetter(s) {
-  // Add your code here
-}
+  let checkRepeated = false;
+  let lower = s.toLowerCase();
+  const unModified = s.split('');
+  const stringArray = lower.split('');
+  if (stringArray.length < 2) {
+    return s;
+  };
+  for (let i = 0; i < stringArray.length; i++) {
+    let newArray = stringArray.map(function(character, index) {
+      if (index !== i) {
+        return character;
+      };
+    });
+    if (newArray.includes(stringArray[i])) {
+      checkRepeated = true;
+    } else {
+      return unModified[i];
+    };
+  };
+  if (checkRepeated) {
+    return "";
+  };
+};
