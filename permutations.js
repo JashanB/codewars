@@ -17,5 +17,16 @@
 // });
 
 function permutations(string) {
-  
+  const stringArray = string.split('');
+  const resultObject = {
+  };
+  for (let i = 0; i < stringArray.length; i++) {
+    let thisString = "";
+    thisString += stringArray[i];
+    for (let z = (i + 1); z < stringArray.length; z++) {
+      for (let x = 0; x < stringArray.length; x++) {
+
+      }
+    }
+  }
 }
