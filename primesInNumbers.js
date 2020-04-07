@@ -13,9 +13,9 @@ function primeFactors(n) {
   let resultObject = {};
   let isDivisable = true;
   const returnFirstDivisor = function (num) {
-    for (let i = num; i > 1; i--) {
-      if (i !== num && num % i === 0) {
-        return [i, num / i];
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) {
+        return [num / i, i];
       };
     };
   };
