@@ -18,8 +18,7 @@
 const maxSequence = function (arr) {
   let isAllNegative = true;
   let resultObj = {};
-  //slice going both ways, start with full length array 
-  for (let i = arr.length - 1; i >= 0; i--) {
+  for (let i = arr.length; i >= 0; i--) {
     if (arr[i] > 0) {
       isAllNegative = false;
     };
@@ -27,13 +26,14 @@ const maxSequence = function (arr) {
     for (let z = 0; z < newArr.length; z++) {
       let word = i.toString() + z.toString();
       let doubleSliced = newArr.slice(z);
-      console.log(doubleSliced)
       resultObj[word] = doubleSliced.reduce((a, b) => a + b, 0);
     };
   };
   const numberArray = Object.values(resultObj).sort((a, b) => a - b);
   if (isAllNegative === true || arr.length < 1) {
     return 0
+  } else if (arr.length === 1) {
+    return arr[0];
   } else {
     return numberArray[numberArray.length - 1];
   };
