@@ -23,7 +23,33 @@
 // Test.assertEquals(incrementString("foobar099"), "foobar100");
 // Test.assertEquals(incrementString(""), "1");
 
-
-function incrementString (strng) {
-  // return incrementedString
-}
+function incrementString(strng) {
+  const stringArray = strng.split('');
+  if (stringArray.length === 0) {
+    return "1";
+  };
+  const returnNumberIndex = function (arr) {
+    const numbers = "1234567890".split('');
+    for (let i = 0; i < arr.length; i++) {
+      for (let num of numbers) {
+        if (arr[i] === num) {
+          return i;
+        };
+      };
+    };
+  };
+  const indexOfNum = returnNumberIndex(stringArray);
+  const letters = stringArray.slice(0, indexOfNum).join('');
+  if (indexOfNum === undefined) {
+    return letters + "1";
+  };
+  let numberInString = parseFloat(stringArray.slice(indexOfNum).join(''));
+  numberInString += 1;
+  let numberStringified = numberInString.toString();
+  if ((letters + numberStringified).length < strng.length) {
+    do {
+      numberStringified = "0" + numberStringified;
+    } while ((letters + numberStringified).length < strng.length);
+  };
+  return letters + numberStringified;
+};
