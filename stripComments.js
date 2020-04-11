@@ -27,5 +27,18 @@
 // checkComments("Q @b\nu\ne -e f g", ["@", "-"], "Q\nu\ne")
 
 function solution(input, markers) {
-  
+  const indexOfMarkers = [];
+  const arrOfSlices = [];
+  const inputArray = input.split('');
+  for (let i = 0; i < inputArray.length; i++) {
+    for (let marker of markers) {
+      if (character === marker) {
+        indexOfMarkers.push(i);
+      };
+    };
+  };
+  arrOfSlices.push(inputArray.slice(0, indexOfMarkers[0]));
+  for (let i = 0; i < inputArray.length; i++) {
+    
+  }
 };
