@@ -26,80 +26,24 @@
 // checkComments("apples, plums % and bananas\npears\noranges !applesauce", ["%", "!"], "apples, plums\npears\noranges")
 // checkComments("Q @b\nu\ne -e f g", ["@", "-"], "Q\nu\ne")
 
-// function solution(input, markers) {
-//   const indexOfMarkers = [];
-//   const arrOfSlices = [];
-//   let includesNewLine = false;
-//   if (input.includes('\n')) {
-//     includesNewLine = true;
-//   };
-//   const inputArray = input.split('');
-//   for (let i = 0; i < inputArray.length; i++) {
-//     for (let marker of markers) {
-//       if (character === marker) {
-//         indexOfMarkers.push(i);
-//       };
-//     };
-//   };
-//   arrOfSlices.push(inputArray.slice(0, indexOfMarkers[0]));
-//   for (let i = 0; i < inputArray.length; i++) {
-//     let firstPart = inputArray.slice(indexOfMarkers[0]).join('');
-//     if (firstPart.includes('\n')) {
-
-//     } 
-
-// }
-
-// function solution(input, markers) {
-//   const indexOfMarkers = [];
-//   let modifyInput = input;
-//   let inputArray = modifyInput.split('');
-//   console.log(inputArray)
-//   for (marker of markers) {
-//     do {
-//       const firstIndex = inputArray.indexOf(marker);
-//       let firstSlice = inputArray.slice(firstIndex).join('');
-//       console.log('hi', firstSlice)
-//       // arrOfSlices.push(inputArray.splice(firstIndex, (firstIndex - inputArray.indexOf('\n'))))
-//       if (firstSlice.includes('\n')) {
-//         console.log('yes')
-//         if (inputArray[inputArray.indexOf('\n') - 1] === " ") {
-//           inputArray.splice(firstIndex -1, ((inputArray.indexOf('\n') + 1) - firstIndex))
-//         } else {
-//           inputArray.splice(firstIndex, (inputArray.indexOf('\n') - firstIndex))
-//         }
-//       } else {
-//         inputArray = inputArray.slice(0, firstIndex - 1)
-//       }
-//     } while (inputArray.includes(marker))
-//   }
-//   console.log(inputArray);
-//   return inputArray.join('');
-// };
-
 function solution(input, markers) {
-  const indexOfMarkers = [];
-  let modifyInput = input;
-  let inputArray = modifyInput.split('');
-  console.log(inputArray)
+  let inputArray = input.split('');
   for (marker of markers) {
     do {
       const firstIndex = inputArray.indexOf(marker);
       let firstSlice = inputArray.slice(firstIndex).join('');
-      console.log('hi', firstSlice)
-      // arrOfSlices.push(inputArray.splice(firstIndex, (firstIndex - inputArray.indexOf('\n'))))
       if (firstSlice.includes('\n')) {
-        console.log('yes')
-        if (inputArray[inputArray[firstIndex] - 1] === " ") {
-          inputArray.splice((firstIndex -1), ((inputArray.indexOf('\n') + 1) - firstIndex))
-        } else {
-          inputArray.splice(firstIndex, (inputArray.indexOf('\n') - firstIndex))
-        }
+        inputArray.splice((firstIndex), (inputArray.indexOf('\n') - firstIndex));
       } else {
-        inputArray = inputArray.slice(0, firstIndex - 1)
+        inputArray = inputArray.slice(0, firstIndex - 1);
       }
-    } while (inputArray.includes(marker))
+    } while (inputArray.includes(marker));
   }
-  console.log(inputArray);
-  return inputArray.join('');
+  const minusSpace = inputArray.filter(function(x, index) {
+    if ( inputArray[index + 1] === "\n" && x === ' ') {
+    } else {
+      return x;
+    };
+  });
+  return minusSpace.join('').trim();
 };
