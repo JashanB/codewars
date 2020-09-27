@@ -13,12 +13,25 @@
 
 function solution(list){
   let duplicatesArr = [];
+  const replaceDupes = [];
   for (let i = 0; i < list.length; i++) {
-    if (list[i + 1] === (list[i] + 1)) {
+    if (list[i + 1] === (list[i] + 1) && list[i + 2] === (list[i] + 2)) {
       duplicatesArr.push(list[i])
       duplicatesArr.push(list[i + 1])
     } else {
       duplicatesArr.push(list[i])
     }
   }
+  for (let int of duplicatesArr) {
+    replaceDupes.includes(int) ? replaceDupes.push("-") : replaceDupes.push(int);
+  }
+  // const replaceDupes = duplicatesArr.map(function(int, index) {
+  //   if (replaceDupes.includes(int)) {
+  //     return "-";
+  //   } else {
+  //     return int;
+  //   }
+  // })
+  const result = replaceDupes.filter((item, index) => replaceDupes.indexOf(item) === index);
+  return result.join('');
 }
