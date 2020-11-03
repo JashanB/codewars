@@ -4,21 +4,26 @@ Array.prototype.sameStructureAs = function (other) {
   //compare this where this = initial array to other which equals second array 
   let thisString = '';
   let compareString = '';
-  const generateString = function(array, length) {
+  if (!isArray(this) || !isArray(other)) {
+    return false;
+  }
+  const generateString = function(array, string) {
+    let resultString = string;
     for (let i of array) {
       if (isArray(i)) {
-        let newLength = i.length;
-        generateString(i, newLength);
+        resultString += 'b';
+        resultString += generateString(i, resultString);
       } else {
-        return 'a' + length.toString();
+        resultString += 'a';
       }
     }
+    return resultString;
   };
   if (isArray(this)) {
-    thisString = generateString(this, this.length);
+    thisString = generateString(this, thisString);
   };
   if (isArray(other)) {
-    compareString = generateString(other, other.length);
+    compareString = generateString(other, compareString);
   };
   if (thisString === compareString) {
     return true;
