@@ -2,6 +2,9 @@ function lastDigit(as){
   if (as.length < 1 || !Array.isArray(as)) {
     return 1;
   };
+  if (as.length === 1) {
+    return as[0];
+  };
   let modArr = as;
   let result = 1;
   const powerOf = function(n1, n2) {
@@ -10,16 +13,17 @@ function lastDigit(as){
     do {
       ans = ans * n1
       of -= 1;
-    } while (of <= 0);
+    } while (of > 0);
     return ans;
   };
   do {
-    result = powerOf(modArr[length - 2], modArr[length - 1]);
-  } while(modArr.length > 2);
-//   for (let i = as.length - 1; i >= 0; i--) {
-
-//   };
-}
+    result = powerOf(modArr[modArr.length - 2], modArr[modArr.length - 1]);
+    modArr = modArr.slice(0, modArr.length -2);
+    modArr.push(result);
+  } while(modArr.length > 1);
+  result = result.toString().slice('')[result.length -1]
+  return result;
+};
 
 // For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
 
