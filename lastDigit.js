@@ -1,4 +1,24 @@
 function lastDigit(as){
+  if (as.length < 1 || !Array.isArray(as)) {
+    return 1;
+  };
+  let modArr = as;
+  let result = 1;
+  const powerOf = function(n1, n2) {
+    let ans = 1;
+    let of = n2
+    do {
+      ans = ans * n1
+      of -= 1;
+    } while (of <= 0);
+    return ans;
+  };
+  do {
+    result = powerOf(modArr[length - 2], modArr[length - 1]);
+  } while(modArr.length > 2);
+//   for (let i = as.length - 1; i >= 0; i--) {
+
+//   };
 }
 
 // For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))).
@@ -12,4 +32,4 @@ function lastDigit(as){
 
 // Corner cases: we assume that 0 ^ 0 = 1 and that lastDigit of an empty list equals to 1.
 
-// This kata generalizes Last digit of a large number; you may find useful to solve it beforehand.
+// This kata generalizes Last digit of a large number; you may find useful to solve it 
