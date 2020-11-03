@@ -14,7 +14,15 @@ Array.prototype.sameStructureAs = function (other) {
       }
     }
   };
-  thisString = generateString()
+  if (isArray(this)) {
+    thisString = generateString(this, this.length);
+  };
+  if (isArray(other)) {
+    compareString = generateString(other, other.length);
+  };
+  if (thisString === compareString) {
+    return true;
+  };
 };
 
 // Complete the function/method (depending on the language) to return true/True when its argument is an array that has the same nesting structures and same corresponding length of nested arrays as the first array.
