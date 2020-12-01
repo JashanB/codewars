@@ -1,6 +1,6 @@
 function removeZeros(array) {
   let numOfZeros = 0;
-  const newArray = array.map(function(item, index) {
+  const newArray = array.filter(function(item) {
     if (item === 0 || item === "0") {
       numOfZeros += 1;
     }
