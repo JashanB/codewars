@@ -25,5 +25,7 @@ describe("Sample tests",() => {
 });
 */
 function evenOrOdd(number) {
-  
+    let answer = ""
+    Number.isInteger(number/2) ? answer = "Even" : answer = "Odd"
+    return answer;
 }
