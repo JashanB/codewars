@@ -14,5 +14,11 @@ describe("Vowels Count Tests",function(){
 });
 */
 function getCount(str) {
-    return 0;
+    let counter = 0;
+    for (const character of str.split("")) {
+        if (character === "a" || character === "e" || character === "i" || character === "o" || character === "u") {
+            counter += 1;
+        }
+    }
+    return counter;
   } 
