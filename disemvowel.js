@@ -21,5 +21,12 @@ describe("Basic tests", () => {
 */
 
 function disemvowel(str) {
-    return str;
+    let splitArray = str.split("");
+    let newArray = [];
+    for (let i = 0; i < splitArray.length; i++) {
+        if (splitArray[i].toLowerCase() !== "a" && splitArray[i].toLowerCase() !== "e" && splitArray[i].toLowerCase() !== "i" && splitArray[i].toLowerCase() !== "o" && splitArray[i].toLowerCase() !== "u") {
+            newArray.push(splitArray[i]);
+        }
+    }
+    return newArray.join('');
   }
