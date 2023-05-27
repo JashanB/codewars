@@ -27,5 +27,19 @@ describe("Max Product", function(){
 */
 
 function maxProduct(a) {
-    // ...
+    let num1 = 0;
+    let num2 = 0;
+    let position = 0;
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] > num1) {
+            num1 = a[i];
+          position = i;
+        }
+    }
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] > num2 && i !== position) {
+            num2 = a[i];
+        }
+    }
+    return num1*num2;
   }
