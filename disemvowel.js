@@ -30,3 +30,7 @@ function disemvowel(str) {
     }
     return newArray.join('');
   }
+
+  function disemvowel(str) {
+    return str.replace(/[aeiouAEIOU]/gi, '');
+  }
