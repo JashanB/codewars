@@ -21,5 +21,7 @@ The middle character(s) of the word represented as a string.
 
 function getMiddle(s) {
     let array = s.split("");
-    return array.length %2 !== 0 ?  array[Math.floor(array.length / 2)] :  array[(Math.floor(array.length / 2) - 1)] + array[Math.floor(array.length / 2)]
+    return array.length %2 !== 0 
+    ?  array[Math.floor(array.length / 2)] 
+    :  array[(Math.floor(array.length / 2) - 1)] + array[Math.floor(array.length / 2)]
 }
