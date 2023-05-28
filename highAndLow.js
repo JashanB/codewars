@@ -11,6 +11,13 @@ There will always be at least one number in the input string.
 Output string must be two numbers separated by a single space, and highest number is first.
 */
 
-function highAndLow(numbers){
-    // ...
-  }
+function highAndLow(numbers) {
+    let low = 0;
+    let high = 0;
+    let sorted = numbers.split(" ").sort((a, b) => {
+        return parseFloat(a) - parseFloat(b);
+    }
+    )
+    let string = sorted[sorted.length -1] + " " + sorted[0];
+    return string
+}
