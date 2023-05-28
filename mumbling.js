@@ -10,5 +10,19 @@ The parameter of accum is a string which includes only letters from a..z and A..
 
 */
 function accum(s) {
-	// your code
+    let answerString = "";
+    let strSplit = s.split("");
+    for (let i = 0; i < strSplit.length; i++) {
+        let index = i;
+        answerString += strSplit[i].toUpperCase();
+        if (i > 0) {
+            do {
+                answerString += strSplit[i].toLowerCase();
+                index -= 1;
+            } while (index > 0);
+        } 
+        answerString += "-";
+
+    }
+    return answerString.slice(0, -1);
 }
