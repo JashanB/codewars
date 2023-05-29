@@ -40,4 +40,13 @@ let people = [
     { name: "Dwight", age: 19 },
     { name: "Oscar", age: 21 },
     { name: "Kevin", age: 55 },
-  ];
+];
+
+let reducedAge = people.reduce((ac, cv) => {
+    if (!ac[cv["age"]]) {
+        ac[cv["age"]] = [{ name: cv["name"], age: cv["age"] }]
+    } else {
+        ac[cv["age"]].push({ name: cv["name"], age: cv["age"] })
+    }
+    return ac;
+}, {})
