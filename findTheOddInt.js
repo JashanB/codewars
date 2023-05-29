@@ -12,6 +12,17 @@ Examples
 */
 
 function findOdd(A) {
-    //happy coding!
-    return 0;
+    let collectedObj = {};
+    let answer = 0;
+    for (const number of A) {
+        if (!collectedObj[number]) {
+            collectedObj[number] = 1;
+        } else {
+            collectedObj[number] += 1;
+        }
+    }
+    let array = Object.keys(collectedObj).map(key => {
+        if (collectedObj[key] % 2 !== 0) { answer = key}
+    })
+    return parseFloat(answer);
   }
