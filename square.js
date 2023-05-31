@@ -28,3 +28,7 @@ var isSquare = function(n){
     if (n === 4) { isSquare = true }
     return isSquare;
 }
+
+var isSquare = function(n){
+    return Number.isInteger(Math.sqrt(n)) ? true : false;
+}
