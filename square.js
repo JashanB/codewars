@@ -21,6 +21,10 @@ Examples
 */
 
 var isSquare = function(n){
-
-    
+    let isSquare = false;
+    for (let i = 0; i <= n/4; i++) {
+        if (i*i === n) { isSquare = true }
+    }
+    if (n === 4) { isSquare = true }
+    return isSquare;
 }
