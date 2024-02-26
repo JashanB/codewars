@@ -10,5 +10,8 @@ Courtesy of projecteuler.net (Problem 1)
 */
 
 function solution(number){
-  
+    let answer = 0;
+    for (let i = 0; i <= number; i++) {
+        
+    }
 }
