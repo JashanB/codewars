@@ -15,6 +15,15 @@ A list may contain multiple flicks.
 Switch the boolean value on the same element as the flick itself.
 */
 
-function flickSwitch(arr){
-    return [];
-  }
+function flickSwitch(arr) {
+    let value = true;
+    const returnArr = [];
+    arr.forEach(element => {
+        if (element === 'flick') {
+            value === true ? value = false : value = true;
+        }
+        returnArr.push(value);
+    });
+
+    return returnArr;
+}
