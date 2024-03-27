@@ -12,5 +12,8 @@
 
 function findNextSquare(sq) {
     // Return the next square if sq is a perfect square, -1 otherwise
+    //perfect square when x / y = y
+    
+    //for initial #, iterate through increasing #s until find perfect square
     return -1;
   }
