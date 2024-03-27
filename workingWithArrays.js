@@ -3,3 +3,13 @@
 // Good luck!
 
 // Hint: watch out for side effects.
+
+function withoutLast(arr) {
+    const mapArr = arr.map((item, index) => {
+        if (index != arr.length - 1) {
+            return item
+        }
+    })
+    mapArr.pop()
+    return mapArr;
+}
